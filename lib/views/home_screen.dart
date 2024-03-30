@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_ui/widgets/custom_drawer.dart';
+import 'package:responsive_ui/widgets/custom_list_view.dart';
 import 'package:responsive_ui/widgets/custom_sliver_list.dart';
 import 'package:responsive_ui/widgets/custom_sliver_grid.dart';
 
@@ -29,9 +30,18 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: const CustomScrollView(
+      body: CustomScrollView(
         slivers: [
-          CustomSliverGrid(),
+          SliverToBoxAdapter(
+            child: LayoutBuilder(builder: (context, constraints) {
+              if (constraints.maxWidth > 600) {
+                return const CustomListView();
+              }
+              else {
+                return const CustomSliverGrid();
+              }
+            }),
+          ),
           CustomSliverList(),
         ],
       ),
