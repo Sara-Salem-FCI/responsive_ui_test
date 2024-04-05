@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_ui/widgets/custom_drawer.dart';
+import 'package:responsive_ui/widgets/desktop_layout.dart';
 
 import '../widgets/mobile_layout.dart';
 import '../widgets/tablet_layout.dart';
@@ -34,10 +35,14 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth > 600) {
-            return const TabletLayout();
-          } else {
+          if (constraints.maxWidth < 600) {
             return const MobileLayout();
+          }
+          else if(constraints.maxWidth <900){
+            return const TabletLayout();
+          }
+          else {
+            return const DesktopLayout();
           }
         },
       ),
