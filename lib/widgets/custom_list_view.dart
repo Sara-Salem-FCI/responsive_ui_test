@@ -6,17 +6,19 @@ class CustomListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          return const AspectRatio(
-            aspectRatio: 1,
-            child: GridItem(),
-          );
-        },
-        scrollDirection: Axis.horizontal,
-        itemCount: 20,
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        height: 200,
+        child: ListView.builder(
+          itemBuilder: (context, index) {
+            return const AspectRatio(
+              aspectRatio: 1,
+              child: GridItem(),
+            );
+          },
+          scrollDirection: Axis.horizontal,
+          itemCount: 20,
+        ),
       ),
     );
   }
