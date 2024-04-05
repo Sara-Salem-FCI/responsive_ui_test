@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
       key: scaffoldKey,
       drawer: const CustomDrawer(),
       backgroundColor: Colors.grey[300],
-      appBar: AppBar(
+      appBar: MediaQuery.sizeOf(context).width <900 ? AppBar(
         backgroundColor: Colors.black,
         leading: IconButton(
           onPressed: () {
@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
             color: Colors.white,
           ),
         ),
-      ),
+      ) : null,
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           if (constraints.maxWidth < 600) {
